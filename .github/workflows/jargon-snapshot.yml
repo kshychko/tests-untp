@@ -8,5 +8,5 @@ jobs:
   snapshot:
     runs-on: ubuntu-latest
     steps:
-      - run: jq -c '. ' < ${{ github.event.client_payload }} >> client_payload.json
-      - run: cat client_payload.json
+      - run: echo '${{ toJSON(github.event.client_payload) }}'
+      
