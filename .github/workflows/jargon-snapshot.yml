@@ -8,6 +8,5 @@ jobs:
   snapshot:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          'echo "client_payload: ${{ github.event.client_payload.artefacts.jsonSchemas[0].url }}"'
-          'echo "client_payload: ${{ github.event.client_payload.artefacts.jsonSchemas[0].fileName }}"'
+      - run: jq -c '. ' < ${{ github.event.client_payload }} >> client_payload.json
+      - run: cat client_payload.json
